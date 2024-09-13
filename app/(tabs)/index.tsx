@@ -1,70 +1,269 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import React from "react";
+import {
+  View,
+  Text,
+  Image,
+  TextInput,
+  TouchableOpacity,
+  ScrollView,
+  StyleSheet,
+} from "react-native";
+import { FontAwesome } from "@expo/vector-icons";
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  contentContainer: {
+    margin: 20,
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom: 10,
+  },
+  image: {
+    width: "100%",
+    height: 200,
+    borderRadius: 10,
+    marginBottom: 10,
+  },
+  suggestContainer: {
+    margin: 20,
+    marginRight: 0,
+  },
+  horizontalScroll: {
+    flexDirection: "row",
+  },
+  suggestItem: {
+    marginRight: 10,
+  },
+  suggestImage: {
+    width: 220,
+    height: 200,
+    borderRadius: 10,
+  },
+  suggestTitle: {
+    fontSize: 16,
+    fontWeight: "bold",
+    marginTop: 10,
+  },
+  suggestPrice: {
+    fontSize: 14,
+    color: "#666",
+    marginTop: 4,
+  },
+  inputSearchContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    margin: 20,
+  },
+  searchIcon: {
+    position: "absolute",
+    left: 16,
+    zIndex: 1,
+  },
+  textInput: {
+    flex: 1,
+    height: 50,
+    borderColor: "gray",
+    borderRadius: 10,
+    paddingLeft: 50,
+    backgroundColor: "#f0f0f0",
+  },
+  headerContainer: {
+    margin: 20,
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  headerImage: {
+    width: 50,
+    height: 50,
+  },
+  headerTextContainer: {
+    flex: 1,
+    paddingLeft: 12,
+    justifyContent: "flex-start",
+    alignItems: "flex-start",
+  },
+  headerTitle: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginLeft: 10,
+  },
+  headerSubtitle: {
+    fontSize: 14,
+    color: "#666",
+    marginLeft: 10,
+  },
+  headerSearchInput: {
+    width: 50,
+    height: 50,
+    borderColor: "gray",
+    borderWidth: 1,
+    borderRadius: 25,
+    padding: 10,
+    backgroundColor: "#f0f0f0",
+  },
+  footerContainer: {
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+    padding: 20,
+  },
+  footerItem: {
+    alignItems: "center",
+  },
+  footerText: {
+    fontSize: 12,
+    color: "#666",
+    marginTop: 4,
+  },
+});
 
-export default function HomeScreen() {
+function HomeScreen() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({ ios: 'cmd + d', android: 'cmd + m' })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+    <View style={styles.container}>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        {header}
+
+        {inputSearch}
+
+        {suggest}
+
+        {content}
+      </ScrollView>
+
+      {footer}
+    </View>
   );
 }
 
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
-});
+const content = (
+  <View style={styles.contentContainer}>
+    <Text style={styles.title}>Explore Destinations</Text>
+    <Image
+      source={{
+        uri: "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/07/anh-phong-canh-dep-41.jpg",
+      }}
+      style={styles.image}
+    />
+    <Image
+      source={{
+        uri: "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/07/anh-phong-canh-dep-41.jpg",
+      }}
+      style={styles.image}
+    />
+    <Image
+      source={{
+        uri: "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/07/anh-phong-canh-dep-41.jpg",
+      }}
+      style={styles.image}
+    />
+  </View>
+);
+
+const suggest = (
+  <View style={styles.suggestContainer}>
+    <Text style={styles.title}>The best cities for you</Text>
+    <ScrollView
+      horizontal={true}
+      showsHorizontalScrollIndicator={false}
+      style={styles.horizontalScroll}
+    >
+      <View style={styles.suggestItem}>
+        <Image
+          source={{
+            uri: "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/07/anh-phong-canh-dep-41.jpg",
+          }}
+          style={styles.suggestImage}
+        />
+        <Text style={styles.suggestTitle}>HongKong</Text>
+        <Text style={styles.suggestPrice}>from $33.00 to $38.00</Text>
+      </View>
+      <View style={styles.suggestItem}>
+        <Image
+          source={{
+            uri: "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/07/anh-phong-canh-dep-41.jpg",
+          }}
+          style={styles.suggestImage}
+        />
+        <Text style={styles.suggestTitle}>HongKong</Text>
+        <Text style={styles.suggestPrice}>from $33.00 to $38.00</Text>
+      </View>
+      <View style={styles.suggestItem}>
+        <Image
+          source={{
+            uri: "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/07/anh-phong-canh-dep-41.jpg",
+          }}
+          style={styles.suggestImage}
+        />
+        <Text style={styles.suggestTitle}>HongKong</Text>
+        <Text style={styles.suggestPrice}>from $33.00 to $38.00</Text>
+      </View>
+    </ScrollView>
+  </View>
+);
+
+const inputSearch = (
+  <View style={styles.inputSearchContainer}>
+    <TouchableOpacity
+      onPress={() => {
+        /* Handle button press */
+      }}
+      style={styles.searchIcon}
+    >
+      <FontAwesome name="search" size={24} color="#aaa" />
+    </TouchableOpacity>
+    <TextInput style={styles.textInput} placeholder="Find a flight" placeholderTextColor="#aaa" />
+  </View>
+);
+
+const header = (
+  <View style={styles.headerContainer}>
+    <Image source={require("../../assets/images/icon.png")} style={styles.headerImage} />
+    <View style={styles.headerTextContainer}>
+      <Text style={styles.headerTitle}>Explore flight</Text>
+      <Text style={styles.headerSubtitle}>Welcome to flight booking</Text>
+    </View>
+    <View>
+      <TextInput style={styles.headerSearchInput}></TextInput>
+    </View>
+  </View>
+);
+
+const footer = (
+  <View style={styles.footerContainer}>
+    <TouchableOpacity
+      style={styles.footerItem}
+      onPress={() => {
+        /* Handle Home press */
+      }}
+    >
+      <FontAwesome name="home" size={24} color="#666" />
+      <Text style={styles.footerText}>Home</Text>
+    </TouchableOpacity>
+    <TouchableOpacity
+      style={styles.footerItem}
+      onPress={() => {
+        /* Handle Explore press */
+      }}
+    >
+      <FontAwesome name="globe" size={24} color="#666" />
+      <Text style={styles.footerText}>Explore</Text>
+    </TouchableOpacity>
+    <TouchableOpacity
+      style={styles.footerItem}
+      onPress={() => {
+        /* Handle Profile press */
+      }}
+    >
+      <FontAwesome name="user" size={24} color="#666" />
+      <Text style={styles.footerText}>Profile</Text>
+    </TouchableOpacity>
+  </View>
+);
+
+export default HomeScreen;
