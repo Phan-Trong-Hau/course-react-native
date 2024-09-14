@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Fight-App",
-    "slug": "Fight-App",
+    "name": "Flight-App",
+    "slug": "Flight-App",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
