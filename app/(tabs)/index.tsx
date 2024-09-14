@@ -131,11 +131,11 @@ function HomeScreen() {
       <ScrollView showsVerticalScrollIndicator={false}>
         <Header/>
 
-        {inputSearch}
+        <Search />
+  
+        <Suggest />
 
-        {suggest}
-
-        {content}
+        <Content/>
       </ScrollView>
 
       <Footer/>
@@ -143,84 +143,90 @@ function HomeScreen() {
   );
 }
 
-const content = (
-  <View style={styles.contentContainer}>
-    <Text style={styles.title}>Explore Destinations</Text>
-    <Image
-      source={{
-        uri: "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/07/anh-phong-canh-dep-41.jpg",
-      }}
-      style={styles.image}
-    />
-    <Image
-      source={{
-        uri: "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/07/anh-phong-canh-dep-41.jpg",
-      }}
-      style={styles.image}
-    />
-    <Image
-      source={{
-        uri: "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/07/anh-phong-canh-dep-41.jpg",
-      }}
-      style={styles.image}
-    />
-  </View>
-);
+const Content = () => {
+  return (
+    <View style={styles.contentContainer}>
+      <Text style={styles.title}>Explore Destinations</Text>
+      <Image
+        source={{
+          uri: "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/07/anh-phong-canh-dep-41.jpg",
+        }}
+        style={styles.image}
+      />
+      <Image
+        source={{
+          uri: "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/07/anh-phong-canh-dep-41.jpg",
+        }}
+        style={styles.image}
+      />
+      <Image
+        source={{
+          uri: "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/07/anh-phong-canh-dep-41.jpg",
+        }}
+        style={styles.image}
+      />
+    </View>
+  );
+}
 
-const suggest = (
-  <View style={styles.suggestContainer}>
-    <Text style={styles.title}>The best cities for you</Text>
-    <ScrollView
-      horizontal={true}
-      showsHorizontalScrollIndicator={false}
-      style={styles.horizontalScroll}
-    >
-      <View style={styles.suggestItem}>
-        <Image
-          source={{
-            uri: "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/07/anh-phong-canh-dep-41.jpg",
-          }}
-          style={styles.suggestImage}
-        />
-        <Text style={styles.suggestTitle}>HongKong</Text>
-        <Text style={styles.suggestPrice}>from $33.00 to $38.00</Text>
-      </View>
-      <View style={styles.suggestItem}>
-        <Image
-          source={{
-            uri: "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/07/anh-phong-canh-dep-41.jpg",
-          }}
-          style={styles.suggestImage}
-        />
-        <Text style={styles.suggestTitle}>HongKong</Text>
-        <Text style={styles.suggestPrice}>from $33.00 to $38.00</Text>
-      </View>
-      <View style={styles.suggestItem}>
-        <Image
-          source={{
-            uri: "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/07/anh-phong-canh-dep-41.jpg",
-          }}
-          style={styles.suggestImage}
-        />
-        <Text style={styles.suggestTitle}>HongKong</Text>
-        <Text style={styles.suggestPrice}>from $33.00 to $38.00</Text>
-      </View>
-    </ScrollView>
-  </View>
-);
+const Suggest = () => {
+  return (
+    <View style={styles.suggestContainer}>
+      <Text style={styles.title}>The best cities for you</Text>
+      <ScrollView
+        horizontal={true}
+        showsHorizontalScrollIndicator={false}
+        style={styles.horizontalScroll}
+      >
+        <View style={styles.suggestItem}>
+          <Image
+            source={{
+              uri: "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/07/anh-phong-canh-dep-41.jpg",
+            }}
+            style={styles.suggestImage}
+          />
+          <Text style={styles.suggestTitle}>HongKong</Text>
+          <Text style={styles.suggestPrice}>from $33.00 to $38.00</Text>
+        </View>
+        <View style={styles.suggestItem}>
+          <Image
+            source={{
+              uri: "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/07/anh-phong-canh-dep-41.jpg",
+            }}
+            style={styles.suggestImage}
+          />
+          <Text style={styles.suggestTitle}>HongKong</Text>
+          <Text style={styles.suggestPrice}>from $33.00 to $38.00</Text>
+        </View>
+        <View style={styles.suggestItem}>
+          <Image
+            source={{
+              uri: "https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/07/anh-phong-canh-dep-41.jpg",
+            }}
+            style={styles.suggestImage}
+          />
+          <Text style={styles.suggestTitle}>HongKong</Text>
+          <Text style={styles.suggestPrice}>from $33.00 to $38.00</Text>
+        </View>
+      </ScrollView>
+    </View>
+  );
+}
 
-const inputSearch = (
-  <View style={styles.inputSearchContainer}>
-    <TouchableOpacity
-      onPress={() => {
-        /* Handle button press */
-      }}
-      style={styles.searchIcon}
-    >
-      <FontAwesome name="search" size={24} color="#aaa" />
-    </TouchableOpacity>
-    <TextInput style={styles.textInput} placeholder="Find a flight" placeholderTextColor="#aaa" />
-  </View>
-);
+const Search = () => {
+  return (
+    <View style={styles.inputSearchContainer}>
+      <TouchableOpacity
+        onPress={() => {
+          /* Handle button press */
+        }}
+        style={styles.searchIcon}
+      >
+        <FontAwesome name="search" size={24} color="#aaa" />
+      </TouchableOpacity>
+      <TextInput style={styles.textInput} placeholder="Find a flight" placeholderTextColor="#aaa" />
+    </View>
+  );
+}
 
 export default HomeScreen;
