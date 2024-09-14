@@ -9,6 +9,8 @@ import {
   StyleSheet,
 } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 
 const styles = StyleSheet.create({
   container: {
@@ -127,7 +129,7 @@ function HomeScreen() {
   return (
     <View style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
-        {header}
+        <Header/>
 
         {inputSearch}
 
@@ -136,7 +138,7 @@ function HomeScreen() {
         {content}
       </ScrollView>
 
-      {footer}
+      <Footer/>
     </View>
   );
 }
@@ -218,51 +220,6 @@ const inputSearch = (
       <FontAwesome name="search" size={24} color="#aaa" />
     </TouchableOpacity>
     <TextInput style={styles.textInput} placeholder="Find a flight" placeholderTextColor="#aaa" />
-  </View>
-);
-
-const header = (
-  <View style={styles.headerContainer}>
-    <Image source={require("../../assets/images/icon.png")} style={styles.headerImage} />
-    <View style={styles.headerTextContainer}>
-      <Text style={styles.headerTitle}>Explore flight</Text>
-      <Text style={styles.headerSubtitle}>Welcome to flight booking</Text>
-    </View>
-    <View>
-      <TextInput style={styles.headerSearchInput}></TextInput>
-    </View>
-  </View>
-);
-
-const footer = (
-  <View style={styles.footerContainer}>
-    <TouchableOpacity
-      style={styles.footerItem}
-      onPress={() => {
-        /* Handle Home press */
-      }}
-    >
-      <FontAwesome name="home" size={24} color="#666" />
-      <Text style={styles.footerText}>Home</Text>
-    </TouchableOpacity>
-    <TouchableOpacity
-      style={styles.footerItem}
-      onPress={() => {
-        /* Handle Explore press */
-      }}
-    >
-      <FontAwesome name="globe" size={24} color="#666" />
-      <Text style={styles.footerText}>Explore</Text>
-    </TouchableOpacity>
-    <TouchableOpacity
-      style={styles.footerItem}
-      onPress={() => {
-        /* Handle Profile press */
-      }}
-    >
-      <FontAwesome name="user" size={24} color="#666" />
-      <Text style={styles.footerText}>Profile</Text>
-    </TouchableOpacity>
   </View>
 );
 
