@@ -1,5 +1,6 @@
 import { View, Text, TextInput } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
+import { router } from 'expo-router';
 
 const FlightBooking = () => {
   return (
@@ -21,6 +22,9 @@ const FlightBooking = () => {
           style={{
             fontSize: 32,
             fontWeight: '700',
+          }}
+          onPress={() => {
+            router.back();
           }}
         >
           &times;
