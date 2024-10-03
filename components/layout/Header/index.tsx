@@ -1,6 +1,7 @@
-import { Image, Text, TextInput, View } from 'react-native';
+import { Image, Text, View } from 'react-native';
 
 import styles from './style';
+import { FontAwesome } from '@expo/vector-icons';
 
 const Header = () => {
   return (
@@ -14,7 +15,7 @@ const Header = () => {
         <Text style={styles.subtitle}>Welcome to flight booking</Text>
       </View>
       <View>
-        <TextInput style={styles.searchInput}></TextInput>
+        <FontAwesome name='user-circle' size={48} color='black' />
       </View>
     </View>
   );

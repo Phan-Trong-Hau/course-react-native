@@ -66,6 +66,19 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 10,
   },
+  exchangeButton: {
+    position: 'absolute',
+    right: 20,
+    top: 44,
+    backgroundColor: '#f2f2f2',
+    padding: 10,
+    borderWidth: 1,
+    borderColor: '#fff',
+    borderRadius: 50,
+  },
+  exchangeIcon: {
+    transform: [{ rotate: '90deg' }],
+  },
 });
 
 export default styles;

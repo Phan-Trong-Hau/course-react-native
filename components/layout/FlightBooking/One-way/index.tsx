@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TextInput } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import Entypo from '@expo/vector-icons/Entypo';
@@ -36,6 +36,15 @@ export default function OneWay() {
           />
           <TextInput placeholder='To' style={styles.input} />
         </View>
+
+        <TouchableOpacity style={styles.exchangeButton}>
+          <FontAwesome
+            name='exchange'
+            size={20}
+            color='black'
+            style={styles.exchangeIcon}
+          />
+        </TouchableOpacity>
 
         <View style={styles.dateContainer}>
           <View style={styles.dateWrapper}>
