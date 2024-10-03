@@ -1,37 +1,60 @@
+import React, { useState } from 'react';
 import { FontAwesome } from '@expo/vector-icons';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Text, TouchableOpacity, View } from 'react-native';
 
 import styles from './style';
 
 const Footer = () => {
+  const [active, setActive] = useState('home');
   return (
     <View style={styles.container}>
-      <TouchableOpacity
-        style={styles.item}
-        onPress={() => {
-          /* Handle Home press */
-        }}
-      >
-        <FontAwesome name='home' size={24} color='#666' />
-        <Text style={styles.text}>Home</Text>
+      <TouchableOpacity style={styles.item} onPress={() => setActive('home')}>
+        <FontAwesome
+          name='home'
+          size={24}
+          color={active === 'home' ? 'green' : '#666'}
+        />
+        <Text
+          style={[styles.text, { color: active === 'home' ? 'green' : '#666' }]}
+        >
+          Home
+        </Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.item}
-        onPress={() => {
-          /* Handle Explore press */
-        }}
+        onPress={() => setActive('explore')}
       >
-        <FontAwesome name='globe' size={24} color='#666' />
-        <Text style={styles.text}>Explore</Text>
+        <FontAwesome
+          name='globe'
+          size={24}
+          color={active === 'explore' ? 'green' : '#666'}
+        />
+        <Text
+          style={[
+            styles.text,
+            { color: active === 'explore' ? 'green' : '#666' },
+          ]}
+        >
+          Explore
+        </Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.item}
-        onPress={() => {
-          /* Handle Profile press */
-        }}
+        onPress={() => setActive('profile')}
       >
-        <FontAwesome name='user' size={24} color='#666' />
-        <Text style={styles.text}>Profile</Text>
+        <FontAwesome
+          name='user'
+          size={24}
+          color={active === 'profile' ? 'green' : '#666'}
+        />
+        <Text
+          style={[
+            styles.text,
+            { color: active === 'profile' ? 'green' : '#666' },
+          ]}
+        >
+          Profile
+        </Text>
       </TouchableOpacity>
     </View>
   );
