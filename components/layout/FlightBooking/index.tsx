@@ -1,60 +1,153 @@
-import React, { useState } from 'react';
-import { View, Text } from 'react-native';
-
-import styles from './style';
-import Header from './Header';
-import RoundTrip from './Round-trip';
-import Footer from './Footer';
-import OneWay from './One-way';
-import MultiCity from './Multi-city';
+import { View, Text, TextInput } from 'react-native';
+import { FontAwesome } from '@expo/vector-icons';
+import { router } from 'expo-router';
 
 const FlightBooking = () => {
-  const TRIP_TABS = {
-    ROUND_TRIP: 'round-trip',
-    ONE_WAY: 'one-way',
-    MULTI_CITY: 'multi-city',
-  };
-  const [tabActive, setTabActive] = useState(TRIP_TABS.ROUND_TRIP);
-
   return (
-    <View style={styles.container}>
-      <Header />
-
-      <View style={styles.tabContainer}>
+    <View
+      style={{
+        marginHorizontal: 10,
+      }}
+    >
+      <View
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          padding: 10,
+        }}
+      >
         <Text
-          style={[
-            styles.tab,
-            tabActive === TRIP_TABS.ROUND_TRIP && styles.tabActive,
-          ]}
-          onPress={() => setTabActive(TRIP_TABS.ROUND_TRIP)}
+          style={{
+            fontSize: 32,
+            fontWeight: '700',
+          }}
+          onPress={() => {
+            router.back();
+          }}
         >
-          Round-trip
+          &times;
         </Text>
         <Text
-          style={[
-            styles.tab,
-            tabActive === TRIP_TABS.ONE_WAY && styles.tabActive,
-          ]}
-          onPress={() => setTabActive(TRIP_TABS.ONE_WAY)}
+          style={{
+            fontSize: 24,
+            fontWeight: '800',
+            paddingRight: 20,
+          }}
+        >
+          Flight
+        </Text>
+        <Text></Text>
+      </View>
+
+      <View
+        style={{
+          marginHorizontal: 10,
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          borderBottomWidth: 1,
+          borderBottomColor: '#f2f2f2',
+        }}
+      >
+        <Text
+          style={{
+            fontSize: 20,
+            fontWeight: '700',
+            color: '#000',
+            paddingHorizontal: 16,
+            paddingBottom: 10,
+            borderBottomWidth: 2,
+          }}
+        >
+          Round-tip
+        </Text>
+        <Text
+          style={{
+            fontSize: 20,
+            fontWeight: '700',
+            color: 'gray',
+            paddingHorizontal: 16,
+            paddingBottom: 10,
+          }}
         >
           One-way
         </Text>
         <Text
-          style={[
-            styles.tab,
-            tabActive === TRIP_TABS.MULTI_CITY && styles.tabActive,
-          ]}
-          onPress={() => setTabActive(TRIP_TABS.MULTI_CITY)}
+          style={{
+            fontSize: 20,
+            fontWeight: '700',
+            color: 'gray',
+            paddingHorizontal: 16,
+            paddingBottom: 10,
+          }}
         >
           Multi-city
         </Text>
       </View>
 
-      {tabActive === TRIP_TABS.ROUND_TRIP && <RoundTrip />}
-      {tabActive === TRIP_TABS.ONE_WAY && <OneWay />}
-      {tabActive === TRIP_TABS.MULTI_CITY && <MultiCity />}
-
-      <Footer />
+      <View
+        style={{
+          margin: 10,
+        }}
+      >
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            backgroundColor: '#f2f2f2',
+            borderRadius: 10,
+            marginTop: 10,
+            padding: 10,
+          }}
+        >
+          <FontAwesome
+            name='plane'
+            size={24}
+            color='black'
+            style={{ marginRight: 12 }}
+          />
+          <TextInput
+            placeholder='From'
+            style={{
+              flex: 1,
+              height: 30,
+              fontSize: 20,
+              fontWeight: '700',
+              color: 'gray',
+            }}
+          />
+        </View>
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            backgroundColor: '#f2f2f2',
+            borderRadius: 10,
+            marginTop: 10,
+            padding: 10,
+          }}
+        >
+          <FontAwesome
+            name='plane'
+            size={24}
+            color='black'
+            style={{ marginRight: 12 }}
+          />
+          <TextInput
+            placeholder='To'
+            style={{
+              flex: 1,
+              height: 30,
+              fontSize: 20,
+              fontWeight: '700',
+              color: 'gray',
+            }}
+          />
+        </View>
+      </View>
     </View>
   );
 };
