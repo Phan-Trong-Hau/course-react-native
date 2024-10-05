@@ -37,7 +37,6 @@ const styles = StyleSheet.create({
   },
   dateInput: {
     flex: 1,
-    height: 30,
     fontSize: 16,
     fontWeight: '700',
     color: 'gray',

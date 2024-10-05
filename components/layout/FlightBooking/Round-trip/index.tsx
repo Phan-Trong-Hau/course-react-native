@@ -1,18 +1,48 @@
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
-import { FontAwesome } from '@expo/vector-icons';
-import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
-import Entypo from '@expo/vector-icons/Entypo';
-import AntDesign from '@expo/vector-icons/AntDesign';
+import {
+  AntDesign,
+  Entypo,
+  FontAwesome,
+  FontAwesome5,
+} from '@expo/vector-icons';
+import DateTimePicker from '@react-native-community/datetimepicker';
 
 import styles from './style';
 
 export default function RoundTrip() {
-  const nowDate = new Date().toLocaleDateString('en-US', {
-    weekday: 'short',
-    month: 'short',
-    day: 'numeric',
+  const [open, setOpen] = React.useState<{
+    departure: boolean;
+    arrival: boolean;
+  }>({
+    departure: false,
+    arrival: false,
   });
+  const [dates, setDates] = React.useState<{ departure: Date; arrival: Date }>({
+    departure: new Date(),
+    arrival: new Date(),
+  });
+
+  const onChange = (
+    event: any,
+    selectedDate?: Date,
+    type?: 'departure' | 'arrival',
+  ) => {
+    if (type) {
+      setOpen(prev => ({ ...prev, [type]: false }));
+      if (selectedDate) {
+        setDates(prev => ({ ...prev, [type]: selectedDate }));
+      }
+    }
+  };
+
+  const formatDate = (date: Date) => {
+    return date.toLocaleDateString('en-US', {
+      weekday: 'short',
+      month: 'short',
+      day: 'numeric',
+    });
+  };
 
   return (
     <>
@@ -47,25 +77,49 @@ export default function RoundTrip() {
         </TouchableOpacity>
 
         <View style={styles.dateContainer}>
-          <View style={styles.dateWrapper}>
+          <TouchableOpacity
+            style={styles.dateWrapper}
+            onPress={() => setOpen(prev => ({ ...prev, departure: true }))}
+          >
             <FontAwesome
               name='calendar'
               size={24}
               color='black'
               style={styles.icon}
             />
-            <TextInput placeholder={nowDate} style={styles.dateInput} />
-          </View>
+            <Text style={styles.dateInput}>{formatDate(dates.departure)}</Text>
+            {open.departure && (
+              <DateTimePicker
+                value={dates.departure}
+                mode={'date'}
+                onChange={(event, selectedDate) =>
+                  onChange(event, selectedDate, 'departure')
+                }
+              />
+            )}
+          </TouchableOpacity>
 
-          <View style={styles.dateWrapper}>
+          <TouchableOpacity
+            style={styles.dateWrapper}
+            onPress={() => setOpen(prev => ({ ...prev, arrival: true }))}
+          >
             <FontAwesome
               name='calendar'
               size={24}
               color='black'
               style={styles.icon}
             />
-            <TextInput placeholder={nowDate} style={styles.dateInput} />
-          </View>
+            <Text style={styles.dateInput}>{formatDate(dates.arrival)}</Text>
+          </TouchableOpacity>
+          {open.arrival && (
+            <DateTimePicker
+              value={dates.arrival}
+              mode={'date'}
+              onChange={(event, selectedDate) =>
+                onChange(event, selectedDate, 'arrival')
+              }
+            />
+          )}
         </View>
       </View>
 
